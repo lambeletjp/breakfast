@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Breakfast - {{ breakfast }}{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('notification') %}
+        <div class="alert alert-info alert-dismissible fade show">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+    {% endfor %}
+    <h2>Dishes</h2>
+    <div class="row">
+        <div class="col-12 col-lg-8">
+            {% if breakfast.dishes|length > 0 %}
+                {% for dish in breakfast.dishes %}
+                    <div class="media shadow border rounded-3 p-3 mb-4">
+                        <div class="media-body">
+                            <h4 class="font-weight-light mb-0">
+                                {{ dish.name }}
+                            </h4>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="text-center">
+                    No dish in this breakfast.
+                </div>
+            {% endif %}
+
+            <h2>Add your own review</h2>
+
+            {{ form(review_form) }}
+        </div>
+    </div>
+{% endblock %}
