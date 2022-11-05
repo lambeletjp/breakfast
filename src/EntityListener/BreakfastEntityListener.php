@@ -8,17 +8,17 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class BreakfastEntityListener {
 
-  private $slugger;
+  private SluggerInterface $slugger;
 
   public function __construct(SluggerInterface $slugger) {
     $this->slugger = $slugger;
   }
 
-  public function prePersist(Breakfast $breakfast, LifecycleEventArgs $event) {
+  public function prePersist(Breakfast $breakfast, LifecycleEventArgs $event): void {
     $breakfast->computeSlug($this->slugger);
   }
 
-  public function preUpdate(Breakfast $breakfast, LifecycleEventArgs $event) {
+  public function preUpdate(Breakfast $breakfast, LifecycleEventArgs $event): void {
     $breakfast->computeSlug($this->slugger);
   }
 

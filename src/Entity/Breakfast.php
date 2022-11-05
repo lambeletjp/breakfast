@@ -23,14 +23,20 @@ class Breakfast {
   private ?string $name = NULL;
 
   #[ORM\Column(type: 'string', length: 255, unique: TRUE)]
-  private $slug;
+  private string $slug;
 
   #[ORM\Column(type: 'datetime_immutable')]
   private ?\DateTimeImmutable $createdAt = NULL;
 
+  /**
+   * @var Collection<int, Dish>
+   */
   #[ORM\ManyToMany(targetEntity: Dish::class, inversedBy: 'breakfasts')]
   private Collection $dishes;
 
+  /**
+   * @var Collection<int, Review>
+   */
   #[ORM\OneToMany(mappedBy: 'breakfast', targetEntity: Review::class, orphanRemoval: true)]
   private Collection $reviews;
 
@@ -40,7 +46,7 @@ class Breakfast {
   }
 
   public function __toString(): string {
-    return $this->getName();
+    return (string) $this->getName();
   }
 
   public function getId(): ?int {
@@ -98,7 +104,7 @@ class Breakfast {
     return $this;
   }
 
-  public function computeSlug(SluggerInterface $slugger) {
+  public function computeSlug(SluggerInterface $slugger): void {
     if (!$this->slug || '-' === $this->slug) {
       $this->slug = (string) $slugger->slug((string) $this)->lower();
     }

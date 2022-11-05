@@ -23,8 +23,11 @@ class Dish {
   private ?string $name = NULL;
 
   #[ORM\Column(type: 'string', length: 255, unique: TRUE)]
-  private $slug;
+  private string $slug;
 
+  /**
+   * @var Collection<int, Breakfast>
+   */
   #[ORM\ManyToMany(targetEntity: Breakfast::class, mappedBy: 'dishes')]
   private Collection $breakfasts;
 
@@ -38,7 +41,7 @@ class Dish {
   }
 
   public function __toString(): string {
-    return $this->getName();
+    return (string) $this->getName();
   }
 
   public function getName(): ?string {
@@ -85,7 +88,7 @@ class Dish {
     return $this;
   }
 
-  public function computeSlug(SluggerInterface $slugger) {
+  public function computeSlug(SluggerInterface $slugger): void {
     if (!$this->slug || '-' === $this->slug) {
       $this->slug = (string) $slugger->slug((string) $this)->lower();
     }

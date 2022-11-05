@@ -18,6 +18,11 @@ class DashboardController extends AbstractDashboardController {
    */
   public function index(): Response {
     $routeBuilder = $this->container->get(AdminUrlGenerator::class);
+
+    if (($routeBuilder instanceof AdminUrlGenerator) === FALSE) {
+      throw new \Exception("AdminUrlGenerator missing");
+    }
+
     $url = $routeBuilder->setController(BreakfastCrudController::class)
       ->generateUrl();
     return $this->redirect($url);

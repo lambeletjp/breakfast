@@ -12,8 +12,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Breakfast|null find($id, $lockMode = NULL, $lockVersion = NULL)
  * @method Breakfast|null findOneBy(array $criteria, array $orderBy = NULL)
  * @method Breakfast[]    findAll()
- * @method Breakfast[]    findBy(array $criteria, array $orderBy = NULL, $limit
- *   = NULL, $offset = NULL)
+ * @method Breakfast[]    findBy(array $criteria, array $orderBy = NULL, $limit = NULL, $offset = NULL)
  */
 class BreakfastRepository extends ServiceEntityRepository {
 

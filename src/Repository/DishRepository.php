@@ -12,8 +12,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Dish|null find($id, $lockMode = NULL, $lockVersion = NULL)
  * @method Dish|null findOneBy(array $criteria, array $orderBy = NULL)
  * @method Dish[]    findAll()
- * @method Dish[]    findBy(array $criteria, array $orderBy = NULL, $limit =
- *   NULL, $offset = NULL)
+ * @method Dish[]    findBy(array $criteria, array $orderBy = NULL, $limit = NULL, $offset = NULL)
  */
 class DishRepository extends ServiceEntityRepository {
 
@@ -36,29 +35,4 @@ class DishRepository extends ServiceEntityRepository {
       $this->getEntityManager()->flush();
     }
   }
-
-  //    /**
-  //     * @return Dish[] Returns an array of Dish objects
-  //     */
-  //    public function findByExampleField($value): array
-  //    {
-  //        return $this->createQueryBuilder('d')
-  //            ->andWhere('d.exampleField = :val')
-  //            ->setParameter('val', $value)
-  //            ->orderBy('d.id', 'ASC')
-  //            ->setMaxResults(10)
-  //            ->getQuery()
-  //            ->getResult()
-  //        ;
-  //    }
-
-  //    public function findOneBySomeField($value): ?Dish
-  //    {
-  //        return $this->createQueryBuilder('d')
-  //            ->andWhere('d.exampleField = :val')
-  //            ->setParameter('val', $value)
-  //            ->getQuery()
-  //            ->getOneOrNullResult()
-  //        ;
-  //    }
 }
