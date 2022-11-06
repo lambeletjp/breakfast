@@ -18,9 +18,7 @@ class ReviewFormType extends AbstractType {
       ->add('email', EmailType::class)
       ->add('grade', ChoiceType::class, [
         'choices' => [
-          'Excellent' => 3,
-          'Good' => 2,
-          'Not good' => 1,
+          array_flip(Review::GRADES),
         ],
         'label' => "Did you like it?",
       ])

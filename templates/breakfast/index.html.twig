@@ -3,6 +3,7 @@
 {% block title %}Breakfasts{% endblock %}
 
 {% block body %}
+    <h1>Breakfasts</h1>
     {% for row in breakfasts|batch(4) %}
         <div class="row">
             {% for breakfast in row %}
@@ -10,9 +11,9 @@
                     <div class="card border shadow lift">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4 class="font-weight-light">
+                                <h2 class="font-weight-light">
                                     {{ breakfast }}
-                                </h4>
+                                </h2>
                             </div>
 
                             <a href="{{ path('breakfast', { slug: breakfast.slug }) }}"

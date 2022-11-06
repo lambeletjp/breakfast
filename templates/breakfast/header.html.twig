@@ -1,5 +1,5 @@
-<ul>
+<div class="row">
     {% for breakfast in breakfasts %}
-        <li><a href="{{ path('breakfast', { slug: breakfast.slug }) }}">{{ breakfast }}</a></li>
+            <div class="col"><a href="{{ path('breakfast', { slug: breakfast.slug }) }}">{{ breakfast }}</a></div>
     {% endfor %}
-</ul>
+</div>

@@ -10,17 +10,16 @@
                     aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
     {% endfor %}
+    <h1>{{ breakfast.name }}</h1>
     <h2>Dishes</h2>
     <div class="row">
         <div class="col-12 col-lg-8">
             {% if breakfast.dishes|length > 0 %}
                 {% for dish in breakfast.dishes %}
-                    <div class="media shadow border rounded-3 p-3 mb-4">
-                        <div class="media-body">
-                            <h4 class="font-weight-light mb-0">
-                                {{ dish.name }}
-                            </h4>
-                        </div>
+                    <div class="shadow border rounded-3 p-3 mb-4">
+                        <span class="font-weight-light mb-0">
+                            {{ dish.name }}
+                        </span>
                     </div>
                 {% endfor %}
             {% else %}
@@ -28,10 +27,27 @@
                     No dish in this breakfast.
                 </div>
             {% endif %}
+        </div>
 
+        <div class="col-12 col-lg-8">
             <h2>Add your own review</h2>
-
             {{ form(review_form) }}
+        </div>
+        <div class="col-12 col-lg-8">
+            <h2>Reviews</h2>
+            {% if breakfast.reviews|length > 0 %}
+                {% for review in breakfast.reviews %}
+                    <div class="mb-4">
+                        <span class="review font-weight-light mb-0">
+                            {{ review.email }} : {{ review.gradeVerbose }}
+                        </span>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="text-center">
+                    No review.
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

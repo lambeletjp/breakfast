@@ -6,61 +6,69 @@ use App\Repository\ReviewRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
-class Review
-{
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+class Review {
 
-    #[ORM\Column(length: 255)]
-    private ?string $email = null;
+  const GRADES = [3 => 'Excellent', 2 => 'Good', 1 => 'Not good'];
 
-    #[ORM\Column]
-    private ?int $grade = null;
+  #[ORM\Id]
+  #[ORM\GeneratedValue]
+  #[ORM\Column]
+  private ?int $id = NULL;
 
-    #[ORM\ManyToOne(inversedBy: 'reviews')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Breakfast $breakfast = null;
+  #[ORM\Column(length: 255)]
+  private ?string $email = NULL;
 
-    public function getId(): ?int
-    {
-        return $this->id;
+  #[ORM\Column]
+  private ?int $grade = NULL;
+
+  #[ORM\ManyToOne(inversedBy: 'reviews')]
+  #[ORM\JoinColumn(nullable: FALSE)]
+  private ?Breakfast $breakfast = NULL;
+
+  public function getId(): ?int {
+    return $this->id;
+  }
+
+  public function getEmail(): ?string {
+    return $this->email;
+  }
+
+  public function setEmail(string $email): self {
+    $this->email = $email;
+
+    return $this;
+  }
+
+  public function getGrade(): ?int {
+    return $this->grade;
+  }
+
+  public function getGradeVerbose(): ?string {
+    if ($this->grade === NULL) {
+      return '';
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
+    if (isset(self::GRADES[$this->grade])) {
+      return self::GRADES[$this->grade];
     }
 
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
+    return '';
+  }
 
-        return $this;
-    }
+  public function setGrade(int $grade): self {
+    $this->grade = $grade;
 
-    public function getGrade(): ?int
-    {
-        return $this->grade;
-    }
+    return $this;
+  }
 
-    public function setGrade(int $grade): self
-    {
-        $this->grade = $grade;
+  public function getBreakfast(): ?Breakfast {
+    return $this->breakfast;
+  }
 
-        return $this;
-    }
+  public function setBreakfast(?Breakfast $breakfast): self {
+    $this->breakfast = $breakfast;
 
-    public function getBreakfast(): ?Breakfast
-    {
-        return $this->breakfast;
-    }
+    return $this;
+  }
 
-    public function setBreakfast(?Breakfast $breakfast): self
-    {
-        $this->breakfast = $breakfast;
-
-        return $this;
-    }
 }

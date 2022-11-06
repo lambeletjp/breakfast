@@ -1,0 +1,10 @@
+App\Entity\Dish:
+  dish_1:
+    name: oeuf
+    slug: oeuf
+  dish_2:
+    name: pain
+    slug: pain
+  dish_3:
+    name: croissant
+    slug: croissant

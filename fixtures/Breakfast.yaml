@@ -1,0 +1,13 @@
+App\Entity\Breakfast:
+  breakfast_1:
+    name: 'Omelette et pain'
+    slug: 'omelette_et_pain'
+    dishes: ['@dish_1','@dish_2']
+  breakfast_2:
+    name: 'Omelette et croissant'
+    slug: 'omelette_et_croissant'
+    dishes: ['@dish_1','@dish_3']
+  breakfast_3:
+    name: 'Pain et croissant'
+    slug: 'pain_et_croissant'
+    dishes: ['@dish_2','@dish_3']

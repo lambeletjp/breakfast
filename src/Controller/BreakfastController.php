@@ -58,8 +58,6 @@ class BreakfastController extends AbstractController {
       return $this->redirectToRoute('breakfast', ['slug' => $breakfast->getSlug()]);
     }
 
-
-    dump($form);
     return new Response($this->twig->render('breakfast/show.html.twig', [
       'breakfast' => $breakfast,
       'review_form' => $form->createView()
